@@ -268,19 +268,6 @@ async def process_message(message, warn=True) -> bool:
 		)
 		return True
 
-	if not is_serious_talk and re.search(r'(^|[ \n])s\W*_*[e3]\W*_*x_*o?\b', content, flags=re.IGNORECASE):
-		try:
-			await message.author.send('Don\'t talk about sexual stuff in chat, nerd')
-		except:
-			pass
-		await message.delete()
-		await discordbot.mute_user(
-			message.author,
-			60 * 10, # 10 minutes
-			message.guild.id if message.guild else None,
-		)
-		return True
-
 	if re.search(r'\b(f\W*a\W*g{1,2})(\W*o\W*t)?\b', content, flags=re.IGNORECASE):
 		try:
 			await message.author.send('Don\'t say slurs in chat, nerd')
